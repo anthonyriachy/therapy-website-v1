@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true
+  },
+  "include": ["src/**/*.ts", "src/Routes/auth.js", "src/Routes/appointments.js", "src/Models/User.js", "src/Models/TherapistAvailability.js", "src/Models/Appointment.js"],
+  "exclude": ["node_modules"]
+}
