@@ -1,29 +1,34 @@
   import { Route, Routes} from 'react-router-dom'
   import './App.css'
-  import  Home  from './screens/Home.jsx'
+  import  Home  from './screens/HomeScreen/Home.jsx'
   import  Error  from './Error.jsx'
-  import NavBar from './components/NavBar/NavBar.jsx'
-  
-  import TherapistPage from './screens/TherapistsDev/TherapistsDev.jsx'
-  import Therapist from './screens/Therapist.jsx'
-  import AuthPage from './screens/Register.tsx'
-  import Schedule from './screens/Appointment/Appointment.tsx'
+  import NavBar from './components/Navbar/NavBar.jsx'
+  import Register from './screens/Register/Register.jsx'
+import { element } from 'prop-types'
+
   function App() {
     
-   
+   const routes=[{
+        path:"/",
+        element:<Home/> 
+      },
+      {
+        path:"/register",
+        element:<Register/>
+      },
+      {
+        path:"*",
+        element:<Error/>
+      }
+    ]
+    
     return (
       <>
-      {location.pathname!=="/register" && <NavBar/>}
+        <NavBar/>
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/register" element={<AuthPage/>} />
-          <Route path="/appointment" element={<Schedule/>} />
-
-
-          <Route path="/therapist/:id" element={<Therapist/>} />
-
-          <Route path="/therapistsdev" element={<TherapistPage/>} />
-          <Route path="*" element={<Error/>} />
+          {routes.map(route=>(
+            <Route key={route.path} path={route.path} element={route.element}/>
+          ))}
         </Routes>
       </>
     )
